@@ -97,9 +97,9 @@ int main(int argc, char* argv[]) {
 	}
 
 	
-	for(size_t i = 0; i < interArr.size(); i++) {
-		printf("word: %s, count: %d\n", interArr[i].word, interArr[i].count);
-	}
+	//for(size_t i = 0; i < interArr.size(); i++) {
+	//	printf("word: %s, count: %d\n", interArr[i].word, interArr[i].count);
+	//}
 
 
 	if(!didHaveArg) {
@@ -197,34 +197,4 @@ void trim(char *src, char *dest) {
 
 	*dest = '\0';
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

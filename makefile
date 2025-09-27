@@ -1,6 +1,6 @@
 CC = g++ -g3
 CFLAGS = -g3 -Wall
-TARGET2 = program
+TARGET2 = P0
 
 OBJS2 = main.o
 OBJS3 = BinaryTreeClass/BinaryTree.o
