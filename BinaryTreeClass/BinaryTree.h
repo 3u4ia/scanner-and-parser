@@ -1,6 +1,7 @@
 #ifndef BINARYTREE_H
 #define BINARYTREE_H
 #include "../IntermediateStruct.h"
+#include "TreeNodeStruct.h"
 #include <stdio.h>
 #include <vector>
 #include <stdlib.h>
@@ -8,12 +9,6 @@
 
 class BinaryTree {
 	private:
-		struct TreeNode {
-			std::vector<char *> words;
-			int count;
-			TreeNode *left;
-			TreeNode *right;
-		};
 		TreeNode *root;
 
 		char *baseFileName;
