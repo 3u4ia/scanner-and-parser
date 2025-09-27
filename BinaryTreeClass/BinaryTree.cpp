@@ -9,15 +9,8 @@ void BinaryTree::insert(TreeNode *&nodePtr, TreeNode *&newNode) {
 	else if(newNode->count > nodePtr->count)
 		insert(nodePtr->right, newNode);
 	else {
-		printf("%s and %s have the same count\n", nodePtr->word, newNode->word);
-		if(newNode->word < nodePtr->word){
-			printf("nodePtr: %s is larger then %s\n", nodePtr->word, newNode->word);
-			insert(nodePtr->left, newNode);
-		}
-		else {
-			printf("nodePtr: %s is smaller then %s\n", nodePtr->word, newNode->word);
-			insert(nodePtr->right, newNode);
-		}
+		// If two words have the same count append the new node to the equal nodes word list
+		nodePtr->words.push_back(newNode->words[0]);
 	}
 		
 }
@@ -26,17 +19,26 @@ void BinaryTree::insertNode(IntermediateRep inter) {
 	TreeNode *newNode = nullptr;
 	
 	newNode = new TreeNode;
-	newNode->word = inter.word;
+	newNode->words.push_back(inter.word);
 	newNode->left = newNode->right = nullptr;
 	newNode->count = inter.count;
 
 	insert(root, newNode);
 }
 
-void BinaryTree::displayInOrder(TreeNode *nodePtr) const {
+void BinaryTree::displayInOrder(TreeNode *nodePtr, size_t depth) const {
 	if(nodePtr) {
-		displayInOrder(nodePtr->left);
-		printf("%s: %d\n", nodePtr->word, nodePtr->count);
-		displayInOrder(nodePtr->right);
+		displayInOrder(nodePtr->left, depth+1);
+
+		for(size_t i = 0; i < depth * 2; i++) printf(" ");
+
+		printf("%d: ", nodePtr->count);
+		for(size_t i = 0; i < nodePtr->words.size(); i++) {
+			printf("%s ", nodePtr->words[i]);
+		}
+		printf("\n");
+
+
+		displayInOrder(nodePtr->right, depth+1);
 	}
 }

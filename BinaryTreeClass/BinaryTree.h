@@ -7,7 +7,7 @@
 class BinaryTree {
 	private:
 		struct TreeNode {
-			vector<char *> words;
+			std::vector<char *> words;
 			int count;
 			TreeNode *left;
 			TreeNode *right;
@@ -15,7 +15,10 @@ class BinaryTree {
 		TreeNode *root;
 
 		void insert(TreeNode *&, TreeNode *&);
-		void displayInOrder(TreeNode *) const;
+
+		void displayInOrder(TreeNode *, size_t) const;
+		void displayPreOrder(TreeNode *&, size_t) const;
+		void displayPostOrder(TreeNode *&, size_t) const;
 		
 	public:
 		BinaryTree() {
@@ -25,8 +28,17 @@ class BinaryTree {
 		void insertNode(IntermediateRep);
 
 		void displayInOrder()const { // overload
-			displayInOrder(root); // helper function essentially that calls displayInOrder
+			displayInOrder(root, 0); // helper function essentially that calls displayInOrder
 		}
+		void displayPreOrder()const {
+			displayInOrder(root, 0);
+		}
+		void displayPostOrder()const {
+			displayInOrder(root, 0);
+		}
+
+
+
 		
 };
 

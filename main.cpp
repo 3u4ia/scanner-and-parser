@@ -7,18 +7,12 @@
 #include "IntermediateStruct.h"
 
 
-using namespace std;
-
 bool getInput(char [], char **, char *argv[], int);
 void trim(char *, char *);
 void tokenize(char *, char**, int);
 
 
 
-//struct IntermediateRep {
-//	int count;
-//	char *word;
-//};
 int main(int argc, char* argv[]) {
 	char *input;
 	char textBuffer[1024] = "";
@@ -87,7 +81,7 @@ int main(int argc, char* argv[]) {
 	tokenize(cleanBuffer, arrOfTokens, wordCount);
 	
 	
-	vector<IntermediateRep> interArr;
+	std::vector<IntermediateRep> interArr;
 	bool foundCopyFlag = false;
 	for(int i = 0; i < wordCount; i++) {
 		for(size_t j = 0; j < interArr.size(); j++) {
@@ -97,7 +91,7 @@ int main(int argc, char* argv[]) {
 			}
 		}
 		if(!foundCopyFlag) {
-			interArr.push_back(IntermediateRep{1, interArr[j].word});
+			interArr.push_back(IntermediateRep{1, arrOfTokens[i]});
 		}
 		foundCopyFlag = false;
 	}
