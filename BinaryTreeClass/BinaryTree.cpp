@@ -1,5 +1,27 @@
 #include "BinaryTree.h"
 
+
+
+void BinaryTree::fileInitHelper(FILE **filePtr, const char *extension) {
+	size_t newSize = strlen(baseFileName) + strlen(extension);
+	char *fullFileName = (char *)malloc(newSize + 1);
+	strcpy(fullFileName, baseFileName);
+	strcat(fullFileName, extension);
+	*filePtr = fopen(fullFileName, "w");
+	if(!*filePtr) {
+		perror("fopen failed");
+	}
+	free(fullFileName);
+}
+
+void BinaryTree::buildTree(std::vector<IntermediateRep> interArr) {
+	for(size_t i = 0; i < interArr.size(); i++) {
+		insertNode(interArr[i]);
+	}
+}
+
+
+
 void BinaryTree::insert(TreeNode *&nodePtr, TreeNode *&newNode) {
 	if(nodePtr == nullptr) {
 		nodePtr = newNode; //insert the node if there is nothing there
@@ -30,13 +52,13 @@ void BinaryTree::displayInOrder(TreeNode *nodePtr, size_t depth) const {
 	if(nodePtr) {
 		displayInOrder(nodePtr->left, depth+1);
 
-		for(size_t i = 0; i < depth * 2; i++) printf(" ");
+		for(size_t i = 0; i < depth * 2; i++) fprintf(inOrderFile, " ");
 
-		printf("%d: ", nodePtr->count);
+		fprintf(inOrderFile, "%d: ", nodePtr->count);
 		for(size_t i = 0; i < nodePtr->words.size(); i++) {
-			printf("%s ", nodePtr->words[i]);
+			fprintf(inOrderFile, "%s ", nodePtr->words[i]);
 		}
-		printf("\n");
+		fprintf(inOrderFile, "\n");
 
 
 		displayInOrder(nodePtr->right, depth+1);
@@ -46,13 +68,13 @@ void BinaryTree::displayInOrder(TreeNode *nodePtr, size_t depth) const {
 
 void BinaryTree::displayPreOrder(TreeNode *nodePtr, size_t depth) const {
 	if(nodePtr) {
-		for(size_t i = 0; i < depth * 2; i++) printf(" ");
+		for(size_t i = 0; i < depth * 2; i++) fprintf(preOrderFile, " ");
 
-		printf("%d: ", nodePtr->count);
+		fprintf(preOrderFile, "%d: ", nodePtr->count);
 		for(size_t i = 0; i < nodePtr->words.size(); i++) {
-			printf("%s ", nodePtr->words[i]);
+			fprintf(preOrderFile, "%s ", nodePtr->words[i]);
 		}
-		printf("\n");
+		fprintf(preOrderFile, "\n");
 		displayPreOrder(nodePtr->left, depth+1);
 		displayPreOrder(nodePtr->right, depth+1);
 
@@ -63,13 +85,13 @@ void BinaryTree::displayPostOrder(TreeNode *nodePtr, size_t depth) const {
 	if(nodePtr) {
 		displayPostOrder(nodePtr->left, depth+1);
 		displayPostOrder(nodePtr->right, depth+1);
-		for(size_t i = 0; i < depth * 2; i++) printf(" ");
+		for(size_t i = 0; i < depth * 2; i++) fprintf(postOrderFile, " ");
 
-		printf("%d: ", nodePtr->count);
+		fprintf(postOrderFile, "%d: ", nodePtr->count);
 		for(size_t i = 0; i < nodePtr->words.size(); i++) {
-			printf("%s ", nodePtr->words[i]);
+			fprintf(postOrderFile, "%s ", nodePtr->words[i]);
 		}
-		printf("\n");
+		fprintf(postOrderFile, "\n");
 
 	}
 }

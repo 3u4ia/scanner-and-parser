@@ -18,4 +18,4 @@ $(OBJS3): BinaryTreeClass/BinaryTree.cpp BinaryTreeClass/BinaryTree.h
 	$(CC) $(CFLAGS) -c BinaryTreeClass/BinaryTree.cpp -o $(OBJS3)
 
 clean:
-	/bin/rm -f *.o $(TARGET2) BinaryTreeClass/*.o
+	/bin/rm -f *.o $(TARGET2) BinaryTreeClass/*.o *.inorder *.preorder *.postorder

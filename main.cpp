@@ -101,21 +101,18 @@ int main(int argc, char* argv[]) {
 		printf("word: %s, count: %d\n", interArr[i].word, interArr[i].count);
 	}
 
-	BinaryTree treeObj;
-	for(size_t i = 0; i < interArr.size(); i++) {
-		treeObj.insertNode(interArr[i]);
+
+	if(!didHaveArg) {
+		input = nullptr;
 	}
 
-	printf("\n\n");
+	BinaryTree treeObj(input);
+	treeObj.buildTree(interArr);
+
 	treeObj.displayInOrder();
-	printf("\n\n");
 	treeObj.displayPreOrder();
-	printf("\n\n");
 	treeObj.displayPostOrder();
 	
-
-
-
 	if(didHaveArg) {
 		free(fileName);
 	}

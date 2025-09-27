@@ -3,3 +3,6 @@ BinaryTreeClass/BinaryTree.o
 program
 someFile.fs25s1
 anotherFile.txt
+*.inorder
+*.preorder
+*.postorder
