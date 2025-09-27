@@ -17,8 +17,8 @@ class BinaryTree {
 		void insert(TreeNode *&, TreeNode *&);
 
 		void displayInOrder(TreeNode *, size_t) const;
-		void displayPreOrder(TreeNode *&, size_t) const;
-		void displayPostOrder(TreeNode *&, size_t) const;
+		void displayPreOrder(TreeNode *, size_t) const;
+		void displayPostOrder(TreeNode *, size_t) const;
 		
 	public:
 		BinaryTree() {
@@ -31,10 +31,10 @@ class BinaryTree {
 			displayInOrder(root, 0); // helper function essentially that calls displayInOrder
 		}
 		void displayPreOrder()const {
-			displayInOrder(root, 0);
+			displayPreOrder(root, 0);
 		}
 		void displayPostOrder()const {
-			displayInOrder(root, 0);
+			displayPostOrder(root, 0);
 		}
 
 

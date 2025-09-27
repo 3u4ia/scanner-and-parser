@@ -42,3 +42,35 @@ void BinaryTree::displayInOrder(TreeNode *nodePtr, size_t depth) const {
 		displayInOrder(nodePtr->right, depth+1);
 	}
 }
+
+
+void BinaryTree::displayPreOrder(TreeNode *nodePtr, size_t depth) const {
+	if(nodePtr) {
+		for(size_t i = 0; i < depth * 2; i++) printf(" ");
+
+		printf("%d: ", nodePtr->count);
+		for(size_t i = 0; i < nodePtr->words.size(); i++) {
+			printf("%s ", nodePtr->words[i]);
+		}
+		printf("\n");
+		displayPreOrder(nodePtr->left, depth+1);
+		displayPreOrder(nodePtr->right, depth+1);
+
+	}
+}
+
+void BinaryTree::displayPostOrder(TreeNode *nodePtr, size_t depth) const {
+	if(nodePtr) {
+		displayPostOrder(nodePtr->left, depth+1);
+		displayPostOrder(nodePtr->right, depth+1);
+		for(size_t i = 0; i < depth * 2; i++) printf(" ");
+
+		printf("%d: ", nodePtr->count);
+		for(size_t i = 0; i < nodePtr->words.size(); i++) {
+			printf("%s ", nodePtr->words[i]);
+		}
+		printf("\n");
+
+	}
+}
+

@@ -108,7 +108,10 @@ int main(int argc, char* argv[]) {
 
 	printf("\n\n");
 	treeObj.displayInOrder();
-
+	printf("\n\n");
+	treeObj.displayPreOrder();
+	printf("\n\n");
+	treeObj.displayPostOrder();
 	
 
 
