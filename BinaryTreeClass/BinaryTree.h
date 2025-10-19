@@ -27,9 +27,9 @@ class BinaryTree {
 		BinaryTree(char *fileName) {
 			root = nullptr;
 			if(fileName == nullptr){
-				baseFileName = strdup("out");
+				baseFileName = "out";
 			} else {
-				baseFileName = strdup(fileName); // Allocating new memory and copying the contents of the str
+				baseFileName = fileName; // Allocating new memory and copying the contents of the str
 			}
 			
 			fileInitHelper(&inOrderFile, ".inorder");
@@ -37,7 +37,6 @@ class BinaryTree {
 			fileInitHelper(&postOrderFile, ".postorder");
 		}
 		~BinaryTree() {
-			free(baseFileName);
 			if(inOrderFile) {
 				fclose(inOrderFile);
 			}
